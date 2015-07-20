@@ -2,14 +2,18 @@ Rails.application.routes.draw do
 
   root 'places#index'
 
+  # This is the Golden 7 for Places
   get '/places' => 'places#index'
   get '/places/new' => 'places#new'
-  get '/places/submit_new' => 'places#submitted'
-  get '/places/:id' => 'places#show'
-  get '/places/:id/delete' => 'places#delete'
-  get '/places/:id/edit' => 'places#edit'
-  get '/places/:id/submit_edit' => 'places#update'
+  post '/places' => 'places#submitted'
 
-  get '/reviews/:place_id/submit_new'  => 'reviews#create'
+  get '/places/:id' => 'places#show'
+  get '/places/:id/edit' => 'places#edit'
+  patch '/places/:id' => 'places#update'
+  
+  delete '/places/:id' => 'places#delete'
+
+  # Reviews
+  post '/reviews/:place_id'  => 'reviews#create'
 
 end
